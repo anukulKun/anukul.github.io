@@ -1,1 +1,0 @@
-# anukulkun.github.io

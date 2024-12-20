@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cses problems</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .center {
+        text-align: center;
+      }
+      details {
+        margin: 20px 0;
+      }
+      summary {
+        cursor: pointer;
+      }
+      .code-container {
+        position: relative;
+        background: #f5f5f5;
+        padding: 1em;
+        border-radius: 5px;
+      }
+      pre {
+        margin: 0;
+        overflow-x: auto;
+      }
+      .copy-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 5px 10px;
+        cursor: pointer;
+        border: none;
+        background-color: white;
+        color: gray;
+        font-size: 15px;
+      }
+      code {
+        background-color: #f5f5f5;
+      }
+      .search-container {
+        text-align: center;
+        margin: 20px 0;
+      }
+      .search-input {
+        padding: 5px;
+        font-size: 16px;
+        width: 200px;
+      }
+      .search-button {
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="center">CSES</h1>
+    
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search problems..." />
+      <button class="search-button" onclick="searchProblems()">Search</button>
+    </div>
+
+    <section>
+      <details>
+        <summary>Weird Algorithm</summary>
+        <div class="code-container">
+          <button class="copy-button" onclick="copyCode('code-weird-algorithm')">Copy</button>
+          <pre><code id="code-weird-algorithm">
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int t;
+    cin >> t;
+    vector<int> arr;
+    while (t--) {
+        int n, k;
+        cin >> n >> k;
+        if (n == 1) {
+            arr.push_back(1);
+        } else if (k == 1) {
+            arr.push_back(n * k);
+        } else {
+            int ans;
+            ans = n * k - (k - 1);
+            arr.push_back(ans);
+        }
+    }
+    for (auto &i : arr) {
+        cout << i << endl;
+    }
+}
+          </code></pre>
+        </div>
+      </details>
+
+      <details>
+        <summary> Missing Number</summary>
+        <div class="code-container">
+          <button class="copy-button" onclick="copyCode('code-midding-Number')">Copy</button>
+          <pre><code id="code-midding-Number">
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int t;
+    cin >> t;
+    vector<int> arr;
+    while (t--) {
+        int n, k;
+        cin >> n >> k;
+        if (n == 1) {
+            arr.push_back(1);
+        } else if (k == 1) {
+            arr.push_back(n * k);
+        } else {
+            int ans;
+            ans = n * k - (k - 1);
+            arr.push_back(ans);
+        }
+    }
+    for (auto &i : arr) {
+        cout << i << endl;
+    }
+}
+          </code></pre>
+        </div>
+      </details>
+
+      <details>
+        <summary>Repetitions</summary>
+        <p>Solution to the Repetitions problem...</p>
+      </details>
+
+    </section>
+
+    <script>
+      window.addEventListener("beforeprint", () => {
+        document.querySelectorAll("details").forEach($details => $details.setAttribute("open", "open"));
+      });
+
+      function copyCode(id) {
+        const code = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          const copyButton = document.querySelector(`[onclick="copyCode('${id}')"]`);
+          copyButton.textContent = 'Copied!!';
+          setTimeout(() => {
+            copyButton.textContent = 'Copy';
+          }, 3000);
+        }).catch(err => {
+          alert('Failed to copy code: ', err);
+        });
+      }
+
+      function searchProblems() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const details = document.querySelectorAll('details');
+        
+        details.forEach(detail => {
+          const summary = detail.querySelector('summary').innerText.toLowerCase();
+          if (summary.includes(input)) {
+            detail.style.display = '';
+          } else {
+            detail.style.display = 'none';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
